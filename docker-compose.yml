@@ -1,0 +1,8 @@
+version: '2'
+services:
+  phpfpm:
+    container_name: phpfpm
+    image: nanoninja/php-fpm
+    entrypoint: php index.php
+    volumes:
+      - /path/to/your/app:/var/www/html
