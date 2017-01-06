@@ -26,7 +26,9 @@ Run the PHP-FPM image, mounting a directory from your host.
 ```shell
 docker run -it --name phpfpm -v /path/to/your/app:/var/www/html nanoninja/php-fpm php index.php
 ```
+
 or using [Docker Compose](https://docs.docker.com/compose/):
+
 ```shell
 version: '2'
 services:
@@ -58,4 +60,6 @@ docker-compose logs phpfpm
  - pdo_mysql
  - pdo_pgsql
  - pgsql
+ - redis
+ - xdebug
  - zip
