@@ -1,9 +1,7 @@
 # PHP-FPM Docker Image
 Docker container to install and run [PHP-FPM](https://php-fpm.org/).
 
-[![Build Status](https://travis-ci.org/nanoninja/php-fpm.svg?branch=master)](https://travis-ci.org/nanoninja/php-fpm)
-
-[![Automated Build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/nanoninja/php-fpm/builds/)
+[![Build Status](https://travis-ci.org/nanoninja/php-fpm.svg?branch=master)](https://travis-ci.org/nanoninja/php-fpm) [![Automated Build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/nanoninja/php-fpm/builds/)
 
 ## What is PHP-FPM ?
 PHP-FPM (FastCGI Process Manager) is an alternative FastCGI implementation for PHP.
@@ -30,7 +28,7 @@ docker run -it --name phpfpm -v /path/to/your/app:/var/www/html nanoninja/php-fp
 or using [Docker Compose](https://docs.docker.com/compose/):
 
 ```shell
-version: '2'
+version: '3'
 services:
   phpfpm:
     container_name: phpfpm
