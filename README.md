@@ -9,28 +9,29 @@ Docker container to install and run [PHP-FPM](https://php-fpm.org/).
 PHP-FPM (FastCGI Process Manager) is an alternative FastCGI implementation for PHP.
 
 ## Getting image
-```shell
-docker pull nanoninja/php-fpm
+```sh
+sudo docker pull nanoninja/php-fpm
 ```
 
 ## Basic usage
 
-```shell
-docker run -v /path/to/your/app:/var/www/html -d nanoninja/php-fpm
+```sh
+sudo docker run -v /path/to/your/app:/var/www/html -d nanoninja/php-fpm
 ```
 
 ## Running your PHP script
 
 ### Running image
 Run the PHP-FPM image, mounting a directory from your host.
-```shell
-docker run -it --name phpfpm -v /path/to/your/app:/var/www/html nanoninja/php-fpm php index.php
+
+```sh
+sudo docker run -it --name phpfpm -v /path/to/your/app:/var/www/html nanoninja/php-fpm php index.php
 ```
 
 or using [Docker Compose](https://docs.docker.com/compose/):
 
-```shell
-version: '2'
+```sh
+version: '3'
 services:
   phpfpm:
     container_name: phpfpm
@@ -40,26 +41,65 @@ services:
       - /path/to/your/app:/var/www/html
 ```
 
-### Logging
-```shell
-docker logs phpfpm
+### Running as server
+
+```sh
+sudo docker run --rm --name phpfpm -v /path/to/your/app:/var/www/html -p 3000:3000 nanoninja/php php-fpm -S="0.0.0.0:3000" -t="/var/www/html"
 ```
-or using [Docker Compose](https://docs.docker.com/compose/):
-```shell
-docker-compose logs phpfpm
+
+### Logging
+```sh
+sudo docker logs phpfpm
+```
+or using [Docker Compose](https://docs.docker.com/compose/) :
+```sh
+sudo docker-compose logs phpfpm
 ```
 
 ## Installed extensions
  - bz2
+ - cgi-fcgi
+ - Core
+ - ctype
+ - curl
+ - date
+ - dom
+ - fileinfo
+ - filter
+ - ftp
  - gd
+ - hash
  - iconv
+ - imagick
+ - json
+ - libxml
  - mbstring
  - mcrypt
- - mysqli
  - mongodb
+ - mysqli
+ - mysqlnd
+ - openssl
+ - pcre
+ - PDO
  - pdo_mysql
  - pdo_pgsql
+ - pdo_sqlite
  - pgsql
+ - Phar
+ - posix
+ - readline
  - redis
+ - Reflection
+ - session
+ - SimpleXML
+ - soap
+ - SPL
+ - sqlite3
+ - standard
+ - tokenizer
  - xdebug
+ - xml
+ - xmlreader
+ - xmlwriter
  - zip
+ - zlib
