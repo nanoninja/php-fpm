@@ -1,8 +1,8 @@
-language: bash
+
+sudo: required
 services: docker
-
 script:
-- docker build -t nanoninja/php-fpm .
-
+  - docker build -t nanoninja/php-fpm .
 after_script:
-- docker images
+  - docker images
+
