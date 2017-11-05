@@ -3,6 +3,8 @@ Docker container to install and run [PHP-FPM](https://php-fpm.org/).
 
 [![Build Status](https://travis-ci.org/nanoninja/php-fpm.svg?branch=master)](https://travis-ci.org/nanoninja/php-fpm) [![Automated Build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/nanoninja/php-fpm/builds/)
 
+## Supported branches and respective Dockerfile links
+
  - 7.1 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/7.1/Dockerfile)
  - 5.6 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/5.6/Dockerfile)
 
