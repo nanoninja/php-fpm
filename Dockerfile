@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:7.1.11-fpm
 
 MAINTAINER Vincent Letourneau <vincent@nanoninja.com>
 

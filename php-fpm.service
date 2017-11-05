@@ -1,7 +1,7 @@
 # Using Systemd
 
 [Unit]
-Description=php-fpm:7.0
+Description=php-fpm
 Requires=docker.service
 After=docker.service
 
