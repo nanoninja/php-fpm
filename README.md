@@ -61,12 +61,12 @@ sudo docker-compose logs phpfpm
 
 ## Installed extensions
  - bz2
- - cgi-fcgi
  - Core
  - ctype
  - curl
  - date
  - dom
+ - ereg
  - fileinfo
  - filter
  - ftp
@@ -74,6 +74,7 @@ sudo docker-compose logs phpfpm
  - hash
  - iconv
  - imagick
+ - intl
  - json
  - libxml
  - mbstring
