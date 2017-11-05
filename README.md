@@ -13,13 +13,13 @@ PHP-FPM (FastCGI Process Manager) is an alternative FastCGI implementation for P
 
 ## Getting image
 ```sh
-sudo docker pull nanoninja/php-fpm
+sudo docker pull nanoninja/php-fpm:5.6
 ```
 
 ## Basic usage
 
 ```sh
-sudo docker run -v /path/to/your/app:/var/www/html -d nanoninja/php-fpm
+sudo docker run -v /path/to/your/app:/var/www/html -d nanoninja/php-fpm:5.6
 ```
 
 ## Running your PHP script
@@ -28,7 +28,7 @@ sudo docker run -v /path/to/your/app:/var/www/html -d nanoninja/php-fpm
 Run the PHP-FPM image, mounting a directory from your host.
 
 ```sh
-sudo docker run -it --name phpfpm -v /path/to/your/app:/var/www/html nanoninja/php-fpm php index.php
+sudo docker run -it --name phpfpm -v /path/to/your/app:/var/www/html nanoninja/php-fpm:5.6 php index.php
 ```
 
 or using [Docker Compose](https://docs.docker.com/compose/):
@@ -38,7 +38,7 @@ version: '3'
 services:
   phpfpm:
     container_name: phpfpm
-    image: nanoninja/php-fpm
+    image: nanoninja/php-fpm:5.6
     entrypoint: php index.php
     volumes:
       - /path/to/your/app:/var/www/html
@@ -47,7 +47,7 @@ services:
 ### Running as server
 
 ```sh
-sudo docker run --rm --name phpfpm -v /path/to/your/app:/var/www/html -p 3000:3000 nanoninja/php php-fpm -S="0.0.0.0:3000" -t="/var/www/html"
+sudo docker run --rm --name phpfpm -v /path/to/your/app:/var/www/html -p 3000:3000 nanoninja/php:5.6 php-fpm -S="0.0.0.0:3000" -t="/var/www/html"
 ```
 
 ### Logging
