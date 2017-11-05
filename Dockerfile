@@ -15,6 +15,8 @@ RUN apt-get update && apt-get upgrade -y \
     libssl-doc \
     libsasl2-dev \
     zlib1g-dev \
+    libicu-dev \
+    g++ \
     && docker-php-ext-install \
         bz2 \
         iconv \
@@ -31,6 +33,8 @@ RUN apt-get update && apt-get upgrade -y \
         --with-jpeg-dir=/usr/include/ \
         --with-png-dir=/usr/include/ \
     && docker-php-ext-install gd \
+    && docker-php-ext-configure intl  \
+    && docker-php-ext-install intl \
     && pecl install xdebug && docker-php-ext-enable xdebug \
     && pecl install mongodb && docker-php-ext-enable mongodb \
     && pecl install redis && docker-php-ext-enable redis \
