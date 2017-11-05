@@ -1,15 +1,15 @@
 # Using Systemd
 
 [Unit]
-Description=php-fpm:7.0
+Description=php-fpm:5.6
 Requires=docker.service
 After=docker.service
 
 [Service]
 ExecStartPre=-/usr/bin/docker kill phpfpm
 ExecStartPre=-/usr/bin/docker rm phpfpm
-ExecStartPre=-/usr/bin/docker pull nanoninja/php-fpm
-ExecStart=/usr/bin/docker run --name phpfpm -d -v /path/to/my/files:/var/www/html nanoninja/php-fpm
+ExecStartPre=-/usr/bin/docker pull nanoninja/php-fpm:5.6
+ExecStart=/usr/bin/docker run --name phpfpm -d -v /path/to/my/files:/var/www/html nanoninja/php-fpm:5.6
 
 [Install]
 WantedBy=multi-user.target
