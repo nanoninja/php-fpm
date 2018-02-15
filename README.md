@@ -1,5 +1,5 @@
 # PHP-FPM Docker Image
-Docker container to install and run [PHP-FPM 7.2](https://php-fpm.org/).
+Docker container to install and run [PHP-FPM](https://php-fpm.org/).
 
 [![Build Status](https://travis-ci.org/nanoninja/php-fpm.svg?branch=master)](https://travis-ci.org/nanoninja/php-fpm) [![Automated Build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/nanoninja/php-fpm/builds/)
 
@@ -14,7 +14,7 @@ PHP-FPM (FastCGI Process Manager) is an alternative FastCGI implementation for P
 
 ## Getting image
 ```sh
-sudo docker pull nanoninja/php-fpm:7.2
+sudo docker pull nanoninja/php-fpm
 ```
 
 ## Running your PHP script
@@ -23,7 +23,7 @@ sudo docker pull nanoninja/php-fpm:7.2
 Run the PHP-FPM image, mounting a directory from your host.
 
 ```sh
-sudo docker run -it --name phpfpm -v /path/to/your/app:/var/www/html nanoninja/php-fpm:7.2 php index.php
+sudo docker run -it --name phpfpm -v /path/to/your/app:/var/www/html nanoninja/php-fpm php index.php
 ```
 
 or using [Docker Compose](https://docs.docker.com/compose/):
@@ -33,7 +33,7 @@ version: '3'
 services:
   phpfpm:
     container_name: phpfpm
-    image: nanoninja/php-fpm:7.2
+    image: nanoninja/php-fpm
     entrypoint: php index.php
     volumes:
       - /path/to/your/app:/var/www/html
@@ -42,7 +42,7 @@ services:
 ### Running as server
 
 ```sh
-sudo docker run --rm --name phpfpm -v /path/to/your/app:/var/www/html -p 3000:3000 nanoninja/php-fpm:7.2 php-fpm -S="0.0.0.0:3000" -t="/var/www/html"
+sudo docker run --rm --name phpfpm -v /path/to/your/app:/var/www/html -p 3000:3000 nanoninja/php-fpm php-fpm -S="0.0.0.0:3000" -t="/var/www/html"
 ```
 
 ### Logging
@@ -53,7 +53,7 @@ sudo docker logs phpfpm
 # Listing installed extensions
 
 ```sh
-sudo docker run --rm -it nanoninja/php-fpm:7.2 php -m
+sudo docker run --rm -it nanoninja/php-fpm php -m
 ```
 
 ## Installed extensions
