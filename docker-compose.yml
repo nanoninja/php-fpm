@@ -2,7 +2,7 @@ version: '3'
 services:
   phpfpm:
     container_name: phpfpm
-    image: nanoninja/php-fpm
+    image: nanoninja/php-fpm:7.2
     entrypoint: php index.php
     volumes:
       - /path/to/your/app:/var/www/html
