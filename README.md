@@ -53,7 +53,7 @@ sudo docker logs phpfpm
 # Listing installed extensions
 
 ```sh
-sudo docker run --rm -it nanoninja/php-fpm:7.2.2 php -m
+sudo docker run --rm -it nanoninja/php-fpm:7.2 php -m
 ```
 
 ## Installed extensions
