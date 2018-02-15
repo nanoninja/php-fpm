@@ -1,6 +1,6 @@
 FROM php:7.2.2-fpm
 
-LABEL maintainer Vincent Letourneau <vincent@nanoninja.com>
+LABEL maintainer="Vincent Letourneau <vincent@nanoninja.com>"
 
 RUN apt-get update && apt-get upgrade -y \
     g++ \
