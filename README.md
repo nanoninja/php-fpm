@@ -1,10 +1,11 @@
 # PHP-FPM Docker Image
-Docker container to install and run [PHP-FPM](https://php-fpm.org/).
+Docker container to install and run [PHP-FPM 7.1](https://php-fpm.org/).
 
 [![Build Status](https://travis-ci.org/nanoninja/php-fpm.svg?branch=master)](https://travis-ci.org/nanoninja/php-fpm) [![Automated Build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/nanoninja/php-fpm/builds/)
 
 ## Supported branches and respective Dockerfile links
 
+ - 7.2 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/7.2/Dockerfile)
  - 7.1 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/7.1/Dockerfile)
  - 5.6 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/5.6/Dockerfile)
 
@@ -14,12 +15,6 @@ PHP-FPM (FastCGI Process Manager) is an alternative FastCGI implementation for P
 ## Getting image
 ```sh
 sudo docker pull nanoninja/php-fpm:7.1
-```
-
-## Basic usage
-
-```sh
-sudo docker run -v /path/to/your/app:/var/www/html -d nanoninja/php-fpm:7.1
 ```
 
 ## Running your PHP script
@@ -54,10 +49,6 @@ sudo docker run --rm --name phpfpm -v /path/to/your/app:/var/www/html -p 3000:30
 ```sh
 sudo docker logs phpfpm
 ```
-or using [Docker Compose](https://docs.docker.com/compose/) :
-```sh
-sudo docker-compose logs phpfpm
-```
 
 ## Installed extensions
  - bz2
@@ -66,7 +57,6 @@ sudo docker-compose logs phpfpm
  - curl
  - date
  - dom
- - ereg
  - fileinfo
  - filter
  - ftp
@@ -74,11 +64,13 @@ sudo docker-compose logs phpfpm
  - hash
  - iconv
  - imagick
+ - imap
  - intl
  - json
  - libxml
  - mbstring
  - mcrypt
+ - memcached
  - mongodb
  - mysqli
  - mysqlnd
