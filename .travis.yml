@@ -4,4 +4,3 @@ script:
   - docker build -t nanoninja/php-fpm:7.1 .
 after_script:
   - docker images
-
