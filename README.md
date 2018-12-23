@@ -46,7 +46,7 @@ services:
 ### Running as server
 
 ```sh
-sudo docker run --rm --name phpfpm -v /path/to/your/app:/var/www/html -p 3000:3000 nanoninja/php:7.2.14 php-fpm -S="0.0.0.0:3000" -t="/var/www/html"
+sudo docker run --rm --name phpfpm -v /path/to/your/app:/var/www/html -p 3000:3000 nanoninja/php-fpm php-fpm -S="0.0.0.0:3000" -t="/var/www/html"
 ```
 
 ### Logging
