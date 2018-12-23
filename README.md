@@ -30,7 +30,7 @@ Run the PHP-FPM image, mounting a directory from your host.
 sudo docker run -it --name phpfpm -v /path/to/your/app:/var/www/html nanoninja/php-fpm php index.php
 ```
 
-or using [Docker Compose](https://docs.docker.com/compose/):
+or using [Docker Compose](https://docs.docker.com/compose/) :
 
 ```sh
 version: '3'
@@ -121,4 +121,5 @@ sudo docker-compose logs phpfpm
 - zlib
 
 ### Zend Modules
+
 - Xdebug
