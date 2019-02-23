@@ -2,7 +2,7 @@ version: '3'
 services:
   phpfpm:
     container_name: phpfpm
-    image: nanoninja/php-fpm:7.2.13
+    image: nanoninja/php-fpm:7.2.15
     ports:
       - 3000:3000
     volumes:
