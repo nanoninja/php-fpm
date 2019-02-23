@@ -21,7 +21,7 @@ PHP-FPM (FastCGI Process Manager) is an alternative FastCGI implementation for P
 ## Getting image
 
 ```sh
-sudo docker pull nanoninja/php-fpm
+sudo docker image pull nanoninja/php-fpm
 ```
 
 ## Running your PHP script
@@ -29,13 +29,13 @@ sudo docker pull nanoninja/php-fpm
 Run the PHP-FPM image, mounting a directory from your host.
 
 ```sh
-sudo docker run --rm -v $(pwd):/var/www/html nanoninja/php-fpm php index.php
+sudo docker container run --rm -v $(pwd):/var/www/html nanoninja/php-fpm php index.php
 ```
 
 ## Running as server
 
 ```sh
-sudo docker run --rm --name phpfpm -v $(pwd):/var/www/html -p 3000:3000 nanoninja/php-fpm php -S="0.0.0.0:3000" -t="/var/www/html"
+sudo docker container run --rm --name phpfpm -v $(pwd):/var/www/html -p 3000:3000 nanoninja/php-fpm php -S="0.0.0.0:3000" -t="/var/www/html"
 ```
 
 or using [Docker Compose](https://docs.docker.com/compose/) :
@@ -56,13 +56,13 @@ services:
 ### Logging
 
 ```sh
-sudo docker logs phpfpm
+sudo docker container logs phpfpm
 ```
 
 ## Installed extensions
 
 ```bash
-sudo docker run --rm nanoninja/php-fpm php -m
+sudo docker container run --rm nanoninja/php-fpm php -m
 ```
 
 ### PHP Modules
@@ -75,6 +75,7 @@ sudo docker run --rm nanoninja/php-fpm php -m
 - curl
 - date
 - dom
+- exif
 - fileinfo
 - filter
 - ftp
