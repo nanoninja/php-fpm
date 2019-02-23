@@ -72,6 +72,7 @@ sudo docker container run --rm nanoninja/php-fpm:5.6.32 php -m
 - date
 - dom
 - ereg
+- exif
 - fileinfo
 - filter
 - ftp
