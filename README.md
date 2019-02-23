@@ -62,6 +62,7 @@ sudo docker run --rm nanoninja/php-fpm:7.2.13 php -m
 ```
 
 ### PHP Modules
+
 - bcmath
 - bz2
 - calendar
