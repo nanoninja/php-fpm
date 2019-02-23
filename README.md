@@ -11,23 +11,21 @@ PHP-FPM (FastCGI Process Manager) is an alternative FastCGI implementation for P
 ## Getting image
 
 ```sh
-sudo docker pull nanoninja/php-fpm
-```
-
-## Basic usage
-
-```sh
-sudo docker run -v /path/to/your/app:/var/www/html -d nanoninja/php-fpm
+sudo docker pull nanoninja/php-fpm:7.2.13
 ```
 
 ## Running your PHP script
 
-### Running image
-
 Run the PHP-FPM image, mounting a directory from your host.
 
 ```sh
-sudo docker run -it --name phpfpm -v /path/to/your/app:/var/www/html nanoninja/php-fpm php index.php
+sudo docker run --rm -v $(pwd):/var/www/html nanoninja/php-fpm:7.2.13 php index.php
+```
+
+## Running as server
+
+```sh
+sudo docker run --rm --name phpfpm -v $(pwd):/var/www/html -p 3000:3000 nanoninja/php-fpm:7.2.13 php -S="0.0.0.0:3000" -t="/var/www/html"
 ```
 
 or using [Docker Compose](https://docs.docker.com/compose/):
@@ -37,16 +35,12 @@ version: '3'
 services:
   phpfpm:
     container_name: phpfpm
-    image: nanoninja/php-fpm
-    entrypoint: php index.php
+    image: nanoninja/php-fpm:7.2.13
+    ports:
+      - 3000:3000
     volumes:
       - /path/to/your/app:/var/www/html
-```
-
-### Running as server
-
-```sh
-sudo docker run --rm --name phpfpm -v /path/to/your/app:/var/www/html -p 3000:3000 nanoninja/php:7.2.14 php-fpm -S="0.0.0.0:3000" -t="/var/www/html"
+    command: php -S="0.0.0.0:3000" -t="/var/www/html"
 ```
 
 ### Logging
@@ -63,8 +57,11 @@ sudo docker-compose logs phpfpm
 
 ## Installed extensions
 
-### PHP Modules
+```bash
+sudo docker run --rm nanoninja/php-fpm:7.2.13 php -m
+```
 
+### PHP Modules
 - bcmath
 - bz2
 - calendar
@@ -87,6 +84,7 @@ sudo docker-compose logs phpfpm
 - ldap
 - libxml
 - mbstring
+- memcached
 - mongodb
 - mysqli
 - mysqlnd
@@ -117,8 +115,11 @@ sudo docker-compose logs phpfpm
 - xmlrpc
 - xmlwriter
 - xsl
+- Zend OPcache
 - zip
 - zlib
 
 ### Zend Modules
+
 - Xdebug
+- Zend OPcache

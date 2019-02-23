@@ -5,7 +5,6 @@ LABEL maintainer="Vincent Letourneau <vincent@nanoninja.com>"
 RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y \
         g++ \
-        git \
         libbz2-dev \
         libc-client-dev \
         libcurl4-gnutls-dev \
@@ -19,12 +18,11 @@ RUN apt-get update && apt-get upgrade -y \
         libmcrypt-dev \
         libmemcached-dev \
         libpq-dev \
-        libsodium-dev \
         libsqlite3-dev \
         libssl-dev \
         libreadline-dev \
-        libxml2-dev \
         libxslt1-dev \
+        memcached \
         wget \
         unzip \
         zlib1g-dev \
@@ -43,32 +41,24 @@ RUN apt-get update && apt-get upgrade -y \
         bcmath \
         bz2 \
         calendar \
-        ctype \
-        curl \
-        fileinfo \
-        ftp \
         gettext \
-        iconv \
-        mbstring \
         mysqli \
+        opcache \
         pdo_mysql \
         pdo_pgsql \
-        pdo_sqlite \
-        phar \
         pgsql \
-        readline \
         soap \
         sockets \
-        sodium \
-        xml \
         xmlrpc \
-        xmlwriter \
         xsl \
         zip \
     && pecl install xdebug && docker-php-ext-enable xdebug \
+    && pecl install memcached && docker-php-ext-enable memcached \
     && pecl install mongodb && docker-php-ext-enable mongodb \
     && pecl install redis && docker-php-ext-enable redis \
     && yes '' | pecl install imagick && docker-php-ext-enable imagick \
     && docker-php-source delete \
-    && apt-get clean -y && apt-get autoclean -y && apt-get autoremove -y \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get remove -y wget \
+    && apt-get autoremove --purge -y && apt-get autoclean -y && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -r /tmp/*
