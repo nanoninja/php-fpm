@@ -57,7 +57,7 @@ RUN apt-get update && apt-get upgrade -y \
     xsl \
     zip \
     && pecl install xdebug-2.5.5 && docker-php-ext-enable xdebug \
-    && pecl install memcached-2.1.0 && docker-php-ext-enable memcached \
+    && pecl install memcached-2.2.0 && docker-php-ext-enable memcached \
     && pecl install mongodb && docker-php-ext-enable mongodb \
     && pecl install redis && docker-php-ext-enable redis \
     && pecl install ssh2 && docker-php-ext-enable ssh2 \
