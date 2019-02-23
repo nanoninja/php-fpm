@@ -43,6 +43,7 @@ RUN apt-get update && apt-get upgrade -y \
     bcmath \
     bz2 \
     calendar \
+    exif \
     gettext \
     mbstring \
     mcrypt \
