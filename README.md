@@ -6,10 +6,13 @@ Docker container to install and run [PHP-FPM](https://php-fpm.org/).
 
 ## Supported branches and respective Dockerfile links
 
+- master [Dockerfile](https://github.com/nanoninja/php-fpm/blob/master/Dockerfile)
+- 7.2.15 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/7.2.15/Dockerfile)
 - 7.2.13 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/7.2.13/Dockerfile)
-- 7.2.2 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/7.2/Dockerfile)
-- 7.1.14 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/7.1/Dockerfile)
-- 5.6.32 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/5.6/Dockerfile)
+- 7.2.2 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/7.2.2/Dockerfile)
+- 7.1.14 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/7.1.14/Dockerfile)
+- 5.6.40 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/5.6.40/Dockerfile)
+- 5.6.32 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/5.6.32/Dockerfile)
 
 ## What is PHP-FPM
 
@@ -23,12 +26,16 @@ sudo docker pull nanoninja/php-fpm
 
 ## Running your PHP script
 
-### Running image
-
 Run the PHP-FPM image, mounting a directory from your host.
 
 ```sh
-sudo docker run -it --name phpfpm -v /path/to/your/app:/var/www/html nanoninja/php-fpm php index.php
+sudo docker run --rm -v $(pwd):/var/www/html nanoninja/php-fpm php index.php
+```
+
+## Running as server
+
+```sh
+sudo docker run --rm --name phpfpm -v $(pwd):/var/www/html -p 3000:3000 nanoninja/php-fpm php -S="0.0.0.0:3000" -t="/var/www/html"
 ```
 
 or using [Docker Compose](https://docs.docker.com/compose/) :
@@ -39,15 +46,11 @@ services:
   phpfpm:
     container_name: phpfpm
     image: nanoninja/php-fpm
-    entrypoint: php index.php
+    ports:
+      - 3000:3000
     volumes:
       - /path/to/your/app:/var/www/html
-```
-
-### Running as server
-
-```sh
-sudo docker run --rm --name phpfpm -v /path/to/your/app:/var/www/html -p 3000:3000 nanoninja/php-fpm php-fpm -S="0.0.0.0:3000" -t="/var/www/html"
+    command: php -S="0.0.0.0:3000" -t="/var/www/html"
 ```
 
 ### Logging
@@ -56,15 +59,11 @@ sudo docker run --rm --name phpfpm -v /path/to/your/app:/var/www/html -p 3000:30
 sudo docker logs phpfpm
 ```
 
-## Listing installed extensions
-
-or using [Docker Compose](https://docs.docker.com/compose/) :
-
-```sh
-sudo docker run --rm -it nanoninja/php-fpm php -m
-```
-
 ## Installed extensions
+
+```bash
+sudo docker run --rm nanoninja/php-fpm php -m
+```
 
 ### PHP Modules
 
@@ -90,6 +89,7 @@ sudo docker run --rm -it nanoninja/php-fpm php -m
 - ldap
 - libxml
 - mbstring
+- memcached
 - mongodb
 - mysqli
 - mysqlnd
@@ -120,9 +120,11 @@ sudo docker run --rm -it nanoninja/php-fpm php -m
 - xmlrpc
 - xmlwriter
 - xsl
+- Zend OPcache
 - zip
 - zlib
 
 ### Zend Modules
 
 - Xdebug
+- Zend OPcache
