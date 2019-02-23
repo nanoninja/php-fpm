@@ -62,6 +62,7 @@ sudo docker run --rm nanoninja/php-fpm:7.1.14 php -m
 ```
 
 ### PHP Modules
+
 - bcmath
 - bz2
 - calendar
@@ -104,7 +105,6 @@ sudo docker run --rm nanoninja/php-fpm:7.1.14 php -m
 - SimpleXML
 - soap
 - sockets
-- sodium
 - SPL
 - sqlite3
 - standard
