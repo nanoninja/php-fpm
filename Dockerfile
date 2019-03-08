@@ -1,4 +1,4 @@
-FROM php:7.2.15-fpm
+FROM php:7.3.2-fpm
 
 LABEL maintainer="Vincent Letourneau <vincent@nanoninja.com>"
 
@@ -22,6 +22,7 @@ RUN apt-get update && apt-get upgrade -y \
     libssl-dev \
     libreadline-dev \
     libxslt1-dev \
+    libzip-dev \
     memcached \
     wget \
     unzip \
@@ -52,7 +53,8 @@ RUN apt-get update && apt-get upgrade -y \
     sockets \
     xmlrpc \
     xsl \
-    zip \
+    && docker-php-ext-configure zip --with-libzip \
+    && docker-php-ext-install zip \
     && pecl install xdebug && docker-php-ext-enable xdebug \
     && pecl install memcached && docker-php-ext-enable memcached \
     && pecl install mongodb && docker-php-ext-enable mongodb \

@@ -1,6 +1,6 @@
 sudo: required
 services: docker
 script:
-  - docker build -t nanoninja/php-fpm:7.2.15 .
+  - docker build -t nanoninja/php-fpm:7.3.2 .
 after_script:
   - docker images
