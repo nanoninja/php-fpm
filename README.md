@@ -7,6 +7,7 @@ Docker container to install and run [PHP-FPM](https://php-fpm.org/).
 ## Supported branches and respective Dockerfile links
 
 - master [Dockerfile](https://github.com/nanoninja/php-fpm/blob/master/Dockerfile)
+- 7.3.3 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/7.3.3/Dockerfile)
 - 7.3.2 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/7.3.2/Dockerfile)
 - 7.2.15 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/7.2.15/Dockerfile)
 - 7.2.13 [Dockerfile](https://github.com/nanoninja/php-fpm/blob/7.2.13/Dockerfile)
