@@ -86,6 +86,7 @@ sudo docker container run --rm nanoninja/php-fpm:7.1.14 php -m
 - ldap
 - libxml
 - mbstring
+- mcrypt
 - memcached
 - mongodb
 - mysqli
