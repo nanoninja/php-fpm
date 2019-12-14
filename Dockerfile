@@ -1,4 +1,4 @@
-FROM php:7.3.10-fpm
+FROM php:7.4.0-fpm
 
 LABEL maintainer="Vincent Letourneau <vincent@nanoninja.com>"
 
@@ -14,9 +14,11 @@ RUN apt-get update && apt-get upgrade -y \
     libjpeg62-turbo-dev \
     libkrb5-dev \
     libldap2-dev \
+    libldb-dev \
     libmagickwand-dev \
     libmcrypt-dev \
     libmemcached-dev \
+    libpng-dev \
     libpq-dev \
     libsqlite3-dev \
     libssl-dev \
@@ -27,17 +29,6 @@ RUN apt-get update && apt-get upgrade -y \
     wget \
     unzip \
     zlib1g-dev \
-    && docker-php-ext-configure gd \
-    --with-freetype-dir=/usr/include/ \
-    --with-jpeg-dir=/usr/include/ \
-    --with-png-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-    && docker-php-ext-install -j$(nproc) imap \
-    && docker-php-ext-configure intl \
-    && docker-php-ext-install -j$(nproc) intl \
-    && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
-    && docker-php-ext-install ldap \
     && docker-php-ext-install -j$(nproc) \
     bcmath \
     bz2 \
@@ -53,7 +44,15 @@ RUN apt-get update && apt-get upgrade -y \
     sockets \
     xmlrpc \
     xsl \
-    && docker-php-ext-configure zip --with-libzip \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd \
+    && PHP_OPENSSL=yes docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
+    && docker-php-ext-install -j$(nproc) imap \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install -j$(nproc) intl \
+    && docker-php-ext-configure ldap \
+    && docker-php-ext-install ldap \
+    && docker-php-ext-configure zip \
     && docker-php-ext-install zip \
     && pecl install xdebug && docker-php-ext-enable xdebug \
     && pecl install memcached && docker-php-ext-enable memcached \
