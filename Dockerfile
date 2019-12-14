@@ -58,6 +58,7 @@ RUN apt-get update && apt-get upgrade -y \
     && pecl install mongodb && docker-php-ext-enable mongodb \
     && pecl install redis && docker-php-ext-enable redis \
     && yes '' | pecl install imagick && docker-php-ext-enable imagick \
+    && pecl install mcrypt-1.0.1 && docker-php-ext-enable mcrypt \
     && docker-php-source delete \
     && apt-get remove -y g++ wget \
     && apt-get autoremove --purge -y && apt-get autoclean -y && apt-get clean -y \
