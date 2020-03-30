@@ -1,4 +1,4 @@
-FROM php:7.4.0-fpm
+FROM php:7.4.2-fpm
 
 LABEL maintainer="Vincent Letourneau <vincent@nanoninja.com>"
 
