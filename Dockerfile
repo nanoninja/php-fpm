@@ -1,4 +1,4 @@
-FROM php:7.4.10-fpm
+FROM php:8.0-fpm
 
 LABEL maintainer="Vincent Letourneau <vincent@nanoninja.com>"
 
@@ -42,7 +42,6 @@ RUN apt-get update && apt-get upgrade -y \
     pgsql \
     soap \
     sockets \
-    xmlrpc \
     xsl \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
@@ -54,6 +53,7 @@ RUN apt-get update && apt-get upgrade -y \
     && docker-php-ext-install ldap \
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip \
+    && pecl install xmlrpc-1.0.0RC3 && docker-php-ext-enable xmlrpc \
     && pecl install xdebug && docker-php-ext-enable xdebug \
     && pecl install memcached && docker-php-ext-enable memcached \
     && pecl install mongodb && docker-php-ext-enable mongodb \
