@@ -41,7 +41,6 @@ RUN apt-get update && apt-get upgrade -y \
     pdo_pgsql \
     pgsql \
     soap \
-    sockets \
     xsl \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
@@ -52,7 +51,7 @@ RUN apt-get update && apt-get upgrade -y \
     && docker-php-ext-configure ldap \
     && docker-php-ext-install ldap \
     && docker-php-ext-configure zip \
-    && docker-php-ext-install zip \
+    && CFLAGS="$CFLAGS -D_GNU_SOURCE" docker-php-ext-install sockets \
     && pecl install xmlrpc-1.0.0RC3 && docker-php-ext-enable xmlrpc \
     && pecl install xdebug && docker-php-ext-enable xdebug \
     && pecl install memcached && docker-php-ext-enable memcached \
