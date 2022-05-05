@@ -5,6 +5,7 @@ LABEL maintainer="Vincent Letourneau <vincent@nanoninja.com>"
 RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y \
     g++ \
+    language-pack-pt \
     libbz2-dev \
     libc-client-dev \
     libcurl4-gnutls-dev \
