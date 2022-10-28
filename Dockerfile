@@ -64,3 +64,9 @@ RUN apt-get update && apt-get upgrade -y \
     && apt-get autoremove --purge -y && apt-get autoclean -y && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /tmp/* /var/tmp/*
+    
+RUN apt-get update && \
+  apt-get install -y ssmtp && \
+  apt-get clean && \
+  echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf && \
+  echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini
